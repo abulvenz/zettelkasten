@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>.notdef</key>
+    <string>_notdef.glif</string>
+    <key>Capital A</key>
+    <string>C_apital A_.glif</string>
+    <key>Capital B</key>
+    <string>C_apital B_.glif</string>
+    <key>Capital C</key>
+    <string>C_apital C_.glif</string>
+    <key>Capital D</key>
+    <string>C_apital D_.glif</string>
+    <key>Capital E</key>
+    <string>C_apital E_.glif</string>
+    <key>Capital F</key>
+    <string>C_apital F_.glif</string>
+    <key>Capital G</key>
+    <string>C_apital G_.glif</string>
+    <key>Capital H</key>
+    <string>C_apital H_.glif</string>
+    <key>Capital I</key>
+    <string>C_apital I_.glif</string>
+    <key>Capital J</key>
+    <string>C_apital J_.glif</string>
+    <key>Capital K</key>
+    <string>C_apital K_.glif</string>
+    <key>Capital L</key>
+    <string>C_apital L_.glif</string>
+    <key>Capital M</key>
+    <string>C_apital M_.glif</string>
+    <key>Capital N</key>
+    <string>C_apital N_.glif</string>
+    <key>Capital O</key>
+    <string>C_apital O_.glif</string>
+    <key>Capital P</key>
+    <string>C_apital P_.glif</string>
+    <key>Capital Q</key>
+    <string>C_apital Q_.glif</string>
+    <key>Capital R</key>
+    <string>C_apital R_.glif</string>
+    <key>Capital S</key>
+    <string>C_apital S_.glif</string>
+    <key>Capital T</key>
+    <string>C_apital T_.glif</string>
+    <key>Capital U</key>
+    <string>C_apital U_.glif</string>
+    <key>Capital V</key>
+    <string>C_apital V_.glif</string>
+    <key>Capital X</key>
+    <string>C_apital X_.glif</string>
+    <key>Capital Y</key>
+    <string>C_apital Y_.glif</string>
+    <key>Capital Z</key>
+    <string>C_apital Z_.glif</string>
+    <key>Capital W</key>
+    <string>C_apital W_.glif</string>
+  </dict>
+</plist>

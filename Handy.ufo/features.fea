@@ -1,0 +1,12 @@
+
+
+@GDEF_Simple = [\Capital A \Capital B \Capital C \Capital D \Capital E \Capital F 
+	\Capital G \Capital H \Capital I \Capital J \Capital K \Capital L \Capital M 
+	\Capital N \Capital O \Capital P \Capital Q \Capital R \Capital S \Capital T 
+	\Capital U \Capital V \Capital X \Capital Y \Capital Z \Capital W ];
+
+table GDEF {
+  GlyphClassDef @GDEF_Simple, , , ;
+
+} GDEF;
+
