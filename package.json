@@ -4,7 +4,9 @@
         "tagl-mithril": "^1.2.2"
     },
     "scripts": {
-        "gh-page": "parcel --public-url https://abulvenz.github.io/zettelkasten --out-dir docs index.html"
+        "gh-page": "parcel build --public-url https://abulvenz.github.io/zettelkasten --out-dir docs index.html"
+    },
+    "devDependencies": {
+        "cssnano": "^4.1.10"
     }
-
 }

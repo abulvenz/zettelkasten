@@ -3,6 +3,26 @@ import tagl from 'tagl-mithril';
 const { div, p, button, textarea } = tagl(m);
 const { random } = Math;
 
+const use = (v, fn) => fn(v);
+
+const tryParse = v => {
+    try {
+        return JSON.parse(v);
+    } catch (error) {
+        return undefined;
+    }
+};
+
+const load = () =>
+    use(localStorage.getItem('zettels'),
+        zettels => tryParse(zettels) || []);
+
+let zettels = load();
+
+const save = () =>
+    localStorage.setItem('zettels', JSON.stringify(zettels));
+
+
 const draggable = vnode => {
     var pos1 = 0,
         pos2 = 0,
@@ -72,24 +92,6 @@ const draggable = vnode => {
     };
 };
 
-const use = (v, fn) => fn(v);
-
-const tryParse = v => {
-    try {
-        return JSON.parse(v);
-    } catch (error) {
-        return undefined;
-    }
-};
-
-const load = () =>
-    use(localStorage.getItem('zettels'),
-        zettels => tryParse(zettels) || []);
-
-let zettels = load();
-
-const save = () =>
-    localStorage.setItem('zettels', JSON.stringify(zettels));
 
 const editableTextarea = vnode => {
     let edit = false;
@@ -99,16 +101,14 @@ const editableTextarea = vnode => {
             text_ = text
         },
         view: ({ attrs: { onsave } }) => !edit ? div({ onclick: e => edit = true }, text_.toUpperCase()) : [
-            [
-                textarea({
-                    value: text_,
-                    oninput: e => use(e.target.value, text => {
-                        text_ = text;
-                        onsave(text);
-                    })
-                }),
-                button({ onclick: e => edit = false }, 'save')
-            ]
+            textarea({
+                value: text_,
+                oninput: e => use(e.target.value, text => {
+                    text_ = text;
+                    onsave(text);
+                })
+            }),
+            button({ onclick: e => edit = false }, 'save')
         ]
     };
 };
@@ -123,11 +123,7 @@ m.mount(document.body, {
         }, '➕'),
         zettels.map((zettel, idx) =>
             m(draggable, {
-                    ondelete: () => {
-                        console.log(zettels, idx)
-                        zettels = zettels.filter(z => z.time !== zettel.time);
-                        console.log(zettels)
-                    },
+                    ondelete: () => zettels = zettels.filter(z => z.time !== zettel.time),
                     onfinished: (x, y) => {
                         zettel.ix = x;
                         zettel.iy = y;
