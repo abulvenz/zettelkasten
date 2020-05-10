@@ -37,10 +37,29 @@ body {
 }
 
 .toolbar {
-    position: absolute;
-    top: -50px;
-    right: 0px;
+    width: 100%;
     display: block;
+    position: absolute;
+    top: -60px;
+    height: 60px;
+    bo-rder: 1px solid #d3d3d3;
+}
+
+.content {
+    height: 200px;
+}
+
+textarea {
+    font-family: 'Ha-ndy';
+    width: 90%;
+    height: 75%;
+}
+
+.content>button {
+    border: none;
+    font-size: xx-large;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
 }
 
 .toolbar:hover {
@@ -48,6 +67,11 @@ body {
 }
 
 .toolbar>button {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    font-size: large;
+    border: none;
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -91,7 +115,7 @@ body {
 .post-it:after {
     content: "";
     position: absolute;
-    z-index: -10;
+    z-index: -1;
     right: -0px;
     bottom: 20px;
     width: 200px;

@@ -68,7 +68,7 @@ const draggable = vnode => {
             };
 
             const dragger = vnode.dom.querySelector('#mydivheader');
-            console.log(vnode.dom)
+            console.log(dragger)
             dragger.onmousedown = (e) => {
                 e = e || window.event;
                 e.preventDefault();
@@ -81,11 +81,8 @@ const draggable = vnode => {
             }
         },
         view: ({ children, attrs: { ondelete } }) => div.postit({ "id": "mydiv" }, [
-            div.toolbar(
+            div.toolbar({ "id": "mydivheader" },
                 button({ onclick: ondelete }, '🗑️')
-            ),
-            div({ "id": "mydivheader" },
-                '_' || "💎"
             ),
             children
         ])
@@ -100,7 +97,7 @@ const editableTextarea = vnode => {
         oncreate: ({ attrs: { text } }) => {
             text_ = text
         },
-        view: ({ attrs: { onsave } }) => !edit ? div({ onclick: e => edit = true }, text_.toUpperCase()) : [
+        view: ({ attrs: { onsave } }) => div.content(!edit ? div({ onclick: e => edit = true }, text_.toUpperCase()) : [
             textarea({
                 value: text_,
                 oninput: e => use(e.target.value, text => {
@@ -108,8 +105,8 @@ const editableTextarea = vnode => {
                     onsave(text);
                 })
             }),
-            button({ onclick: e => edit = false }, 'save')
-        ]
+            button({ onclick: e => edit = false }, '↩️')
+        ])
     };
 };
 
