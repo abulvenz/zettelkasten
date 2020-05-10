@@ -1,6 +1,10 @@
 {
-  "dependencies": {
-    "mithril": "^2.0.4",
-    "tagl-mithril": "^1.2.2"
-  }
+    "dependencies": {
+        "mithril": "^2.0.4",
+        "tagl-mithril": "^1.2.2"
+    },
+    "scripts": {
+        "gh-page": "parcel --public-url https://abulvenz.github.io/zettelkasten --out-dir docs index.html"
+    }
+
 }

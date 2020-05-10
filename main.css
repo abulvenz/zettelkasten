@@ -32,7 +32,8 @@ body {
 
 .addbutton {
     background-color: lightgreen;
-    border-radius: 1em;
+    font-size: xx-large;
+    border-radius: 2em;
 }
 
 .toolbar {
@@ -44,6 +45,10 @@ body {
 
 .toolbar:hover {
     display: block
+}
+
+.toolbar>button {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 

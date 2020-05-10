@@ -86,7 +86,7 @@ const load = () =>
     use(localStorage.getItem('zettels'),
         zettels => tryParse(zettels) || []);
 
-const zettels = load();
+let zettels = load();
 
 const save = () =>
     localStorage.setItem('zettels', JSON.stringify(zettels));
@@ -117,7 +117,7 @@ m.mount(document.body, {
     view: vnode => [
         button.addbutton({
             onclick: e => {
-                zettels.push({ text: 'Neuer Zettel', ix: random() * innerWidth - 100, iy: random() * innerHeight - 100, deg: random() * 20 - 10 });
+                zettels.push({ text: 'Neuer Zettel', ix: random() * innerWidth - 100, iy: random() * innerHeight - 100, deg: random() * 20 - 10, time: Date.now() });
                 save();
             }
         }, '➕'),
@@ -125,7 +125,7 @@ m.mount(document.body, {
             m(draggable, {
                     ondelete: () => {
                         console.log(zettels, idx)
-                        zettels.splice(idx, 1);
+                        zettels = zettels.filter(z => z.time !== zettel.time);
                         console.log(zettels)
                     },
                     onfinished: (x, y) => {
@@ -133,12 +133,12 @@ m.mount(document.body, {
                         zettel.iy = y;
                         save();
                     },
-                    key: idx,
+                    key: zettel.time,
                     ix: zettel.ix,
                     iy: zettel.iy,
                     deg: zettel.deg
                 },
-                m(editableTextarea, { text: zettel.text.toUpperCase(), onsave: t => zettel.text = t.toUpperCase() })
+                m(editableTextarea, { text: zettel.text, onsave: t => zettel.text = t })
             )
         )
     ]
