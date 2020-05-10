@@ -60,11 +60,14 @@ const draggable = vnode => {
                 document.onmousemove = elementDrag;
             }
         },
-        view: vnode => div.postit({ "id": "mydiv" }, [
+        view: ({ children, attrs: { ondelete } }) => div.postit({ "id": "mydiv" }, [
+            div.toolbar(
+                button({ onclick: ondelete }, '🗑️')
+            ),
             div({ "id": "mydivheader" },
                 '_' || "💎"
             ),
-            vnode.children
+            children
         ])
     };
 };
@@ -83,7 +86,6 @@ const load = () =>
     use(localStorage.getItem('zettels'),
         zettels => tryParse(zettels) || []);
 
-
 const zettels = load();
 
 const save = () =>
@@ -97,7 +99,8 @@ const editableTextarea = vnode => {
             text_ = text
         },
         view: ({ attrs: { onsave } }) => !edit ? div({ onclick: e => edit = true }, text_.toUpperCase()) : [
-            [textarea({
+            [
+                textarea({
                     value: text_,
                     oninput: e => use(e.target.value, text => {
                         text_ = text;
@@ -117,9 +120,14 @@ m.mount(document.body, {
                 zettels.push({ text: 'Neuer Zettel', ix: random() * innerWidth - 100, iy: random() * innerHeight - 100, deg: random() * 20 - 10 });
                 save();
             }
-        }, '+'),
+        }, '➕'),
         zettels.map((zettel, idx) =>
             m(draggable, {
+                    ondelete: () => {
+                        console.log(zettels, idx)
+                        zettels.splice(idx, 1);
+                        console.log(zettels)
+                    },
                     onfinished: (x, y) => {
                         zettel.ix = x;
                         zettel.iy = y;

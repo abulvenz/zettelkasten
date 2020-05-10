@@ -35,6 +35,17 @@ body {
     border-radius: 1em;
 }
 
+.toolbar {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    display: block;
+}
+
+.toolbar:hover {
+    display: block
+}
+
 
 /** https://mentormate.com/blog/css-postit-note/ */
 
