@@ -120,7 +120,10 @@ m.mount(document.body, {
         }, '➕'),
         zettels.map((zettel, idx) =>
             m(draggable, {
-                    ondelete: () => zettels = zettels.filter(z => z.time !== zettel.time),
+                    ondelete: () => {
+                        zettels = zettels.filter(z => z.time !== zettel.time);
+                        save();
+                    },
                     onfinished: (x, y) => {
                         zettel.ix = x;
                         zettel.iy = y;
@@ -131,7 +134,13 @@ m.mount(document.body, {
                     iy: zettel.iy,
                     deg: zettel.deg
                 },
-                m(editableTextarea, { text: zettel.text, onsave: t => zettel.text = t })
+                m(editableTextarea, {
+                    text: zettel.text,
+                    onsave: t => {
+                        zettel.text = t;
+                        save();
+                    }
+                })
             )
         )
     ]
